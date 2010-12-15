@@ -13,9 +13,7 @@
  * for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with ACVLib. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * $Id$ */
+ * License along with ACVLib. If not, see <http://www.gnu.org/licenses/>. */
 #ifndef ACV_LMA_H
 #define ACV_LMA_H
 
