@@ -51,6 +51,14 @@ namespace acv {
       return mKeyPoints[1]->xy();
     }
 
+    Keypoint *firstKeypoint() const {
+      return mKeyPoints[0];
+    }
+
+    Keypoint *secondKeypoint() const {
+      return mKeyPoints[1];
+    }
+
     float distSqr() const {
       return mDistSqr;
     }

@@ -92,11 +92,16 @@ namespace acv {
     std::vector<Match> v;
     v.push_back(Match(new Keypoint(1, 1, 0, 0), new Keypoint(0, 0, 0, 0), 0));
     v.push_back(Match(new Keypoint(1, 5, 0, 0), new Keypoint(3, 1, 0, 0), 0));
+    
     CollageRansacModeller<Match> m(10, 10);
     acv::CollageRansacModeller<Match>::model_type model = m.fit(v);
-
     assert((model * Eigen::Vector2d(0, 0)).isApprox(Eigen::Vector2d(1, 1)));
     assert((model * Eigen::Vector2d(3, 1)).isApprox(Eigen::Vector2d(1, 5)));
+
+    for(unsigned i = 0; i < v.size(); i++) {
+      delete v[i].firstKeypoint();
+      delete v[i].secondKeypoint();
+    }
   }
 #endif
 
