@@ -60,7 +60,7 @@ namespace acv {
       int iteration = 0;
       int paramCount = mModeller.paramNumber();
       int residCount = mModeller.residualNumber();
-      float dampingTerm = 1;
+      double dampingTerm = 1;
 
       /* Allocate memory for everything. */
       Eigen::VectorXd params(paramCount);                    /* Parameters. */
@@ -73,7 +73,7 @@ namespace acv {
 
       /* Initialize. */
       mModeller.parameters(approximateModel, params);
-      float error = mModeller.error(params);
+      double error = mModeller.error(params);
 
       /* Iterate. */
       while(true) {
@@ -94,7 +94,7 @@ namespace acv {
           a.lu().solve(grad, &step);
           newParams = params + step;
 
-          float newError = mModeller.error(newParams);
+          double newError = mModeller.error(newParams);
 
           if(newError < error) {
             error = newError;
@@ -123,10 +123,10 @@ namespace acv {
 
   private:
     int mMaxIterations;
-    float mSquaredGradMagThreshold;
-    float mSquaredStepMagThreshold;
-    float mSquaredErrMagThreshold;
-    float mDamping;
+    double mSquaredGradMagThreshold;
+    double mSquaredStepMagThreshold;
+    double mSquaredErrMagThreshold;
+    double mDamping;
     Modeller mModeller;
   };
 
@@ -161,7 +161,7 @@ namespace acv {
      *
      * @param params                   parameters vector.
      * @returns                        residual error. */
-    float error(const Eigen::VectorXd& params) const;
+    double error(const Eigen::VectorXd& params) const;
 
     /** Calculates Jacobian and residuals vector for given parameters. 
      *
