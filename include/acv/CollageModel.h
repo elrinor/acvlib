@@ -20,6 +20,7 @@
 #include "config.h"
 #include <cmath>
 #include <Eigen/Dense>
+#include <arx/utility/Unreachable.h>
 
 namespace acv {
 // -------------------------------------------------------------------------- //
@@ -92,7 +93,7 @@ namespace acv {
       } else if(paramIndex == 3) { /* Dy derivative. */
         result(1, 2) = 1;
       } else {
-        Unreachable();
+        unreachable();
       }
 
       return result;
